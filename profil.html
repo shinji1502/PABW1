@@ -1,42 +1,98 @@
 <!DOCTYPE html>
-<!--
-  KERANGKA AWAL — Halaman Profil Saya
-  PABW 2026/2027 · Pertemuan 3
-
-  Cara pakai:
-  1. Salin berkas ini, ganti nama menjadi profil.html
-  2. Ganti setiap tulisan TODO dengan isi milik Anda SENDIRI
-  3. Simpan, lalu buka di peramban (F5 untuk memuat ulang)
-  4. Kerjakan berurutan mengikuti Lembar B, C, D, dan E pada worksheet
-
-  Jangan menghapus komentar TODO sebelum bagian itu Anda kerjakan —
-  komentar itu adalah daftar periksa Anda sendiri.
--->
-<html>
+<html lang="id">
 <head>
-  <title>TODO: tulis judul halaman Anda di sini</title>
-  <!-- TODO B.1: tambahkan dua baris meta di bawah ini:
-       <meta charset="...">
-       <meta name="viewport" content="...">  -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Daftar film yang pernah saya tonton beserta rating pribadi saya.">
+  <title>Daftar Film Saya</title>
 </head>
 <body>
 
-  <!-- TODO C.1: buat <header> di sini.
-       Isinya: satu <h1> berisi judul halaman Anda.
-       Di dalamnya juga ada <nav> berisi 3 tautan ke bagian halaman. -->
+  <header>
+    <h1>Daftar Film Saya</h1>
+    <nav aria-label="Navigasi utama">
+      <ul>
+        <li><a href="#bagian-1">Daftar Film</a></li>
+        <li><a href="#bagian-2">Tambah Film</a></li>
+        <li><a href="#film-favorit">Film Favorit</a></li>
+      </ul>
+    </nav>
+  </header>
 
-  <!-- TODO C.2: buat <main> di sini sebagai pembungkus semua bagian isi.
-       Di dalamnya ada 2 <section>, masing-masing punya <h2> sendiri. -->
+  <main>
+    <section id="bagian-1">
+      <h2>Daftar Film</h2>
 
-    <!-- TODO D.1: di dalam section pertama, buat tabel data Anda.
-         Wajib ada: <caption>, <thead>, <th scope="col">, dan minimal 3 baris data. -->
+      <table>
+        <caption>Film yang pernah saya tonton beserta rating saya</caption>
+        <thead>
+          <tr>
+            <th scope="col">Judul</th>
+            <th scope="col">Tahun</th>
+            <th scope="col">Sutradara</th>
+            <th scope="col">Rating saya (1–10)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Interstellar</th>
+            <td>2014</td>
+            <td>Christopher Nolan</td>
+            <td>9</td>
+          </tr>
+          <tr>
+            <th scope="row">Spirited Away</th>
+            <td>2001</td>
+            <td>Hayao Miyazaki</td>
+            <td>9</td>
+          </tr>
+          <tr>
+            <th scope="row">Parasite</th>
+            <td>2019</td>
+            <td>Bong Joon-ho</td>
+            <td>8</td>
+          </tr>
+          <tr>
+            <th scope="row">Your Name</th>
+            <td>2016</td>
+            <td>Makoto Shinkai</td>
+            <td>8</td>
+          </tr>
+        </tbody>
+      </table>
 
-    <!-- TODO E.1: di dalam section kedua, buat form Anda.
-         Wajib ada: minimal 3 kolom, setiap kolom punya <label for> yang
-         cocok dengan id input-nya, dan satu atribut validasi. -->
+      <figure id="film-favorit">
+        <img src="film-1.webp"
+             alt="Ilustrasi pita film berwarna gelap dengan tiga bingkai berwarna merah, biru, dan kuning, bertuliskan Film Favorit Saya"
+             width="640" height="360" loading="lazy">
+        <figcaption>Ilustrasi film favorit saya.</figcaption>
+      </figure>
+    </section>
 
-  <!-- TODO C.3: buat <footer> di sini.
-       Isinya: nama Anda, NIM Anda, dan tahun. -->
+    <section id="bagian-2">
+      <h2>Tambah Film</h2>
+
+      <form action="/simpan" method="post">
+        <p>
+          <label for="judul-film">Judul film</label>
+          <input type="text" id="judul-film" name="judul-film" required>
+        </p>
+        <p>
+          <label for="tahun-film">Tahun rilis</label>
+          <input type="number" id="tahun-film" name="tahun-film" min="1888" max="2026" required>
+        </p>
+        <p>
+          <label for="rating-film">Rating saya (1–10)</label>
+          <input type="number" id="rating-film" name="rating-film" min="1" max="10" required>
+        </p>
+        <button type="submit">Simpan</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>Hideaki Hayyi Shinji · NIM_ANDA · 2026</p>
+  </footer>
 
 </body>
 </html>
