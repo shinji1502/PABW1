@@ -1,10 +1,10 @@
 # PABW1
 ## Pertemuan 3 — Halaman profil saya
 
-Topik halaman saya: daftar film yang pernah saya tonton.
+Topik halaman saya: daftar film yang pernah aku tonton.
 
 - Judul halaman: Daftar Film Saya
-- Deskripsi: daftar film yang pernah saya tonton beserta rating pribadi saya
+- Deskripsi: daftar film yang pernah aku tonton dan rating filmnya
 - Tautan navigasi: Daftar Film, Tambah Film, Film Favorit
 - Dua bagian utama: Daftar Film, Tambah Film
 - Kolom tabel: judul, tahun, sutradara, rating saya
@@ -13,7 +13,13 @@ Topik halaman saya: daftar film yang pernah saya tonton.
 
 ## Catatan penggunaan AI
 
-TODO: ganti dengan keterangan jujur milik Anda. Contoh:
-Kerangka profil.html (head, landmark, tabel, form) dibantu AI (Claude) dan
-saya pelajari serta sesuaikan. Data film, gambar, pengujian Lighthouse,
-pengujian manual, dan jawaban tiket keluar saya kerjakan sendiri.
+Dibantu AI:
+- Bikin gambar film.png
+- ngejelasin langkah pakai GitHub Desktop
+
+Aku kerjain sendiri:
+- Bikin kerangka profil.html (head, landmark, tabel, form)
+- Milih topik dan ganti isi tabel pakai film yang beneran kutonton
+- Jalanin Lighthouse dan uji manual (Tab, link navigasi, label)
+- menjawab pertanyaan di worksheet
+- Nyimpen semuanya ke GitHub
