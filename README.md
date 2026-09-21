@@ -9,7 +9,7 @@ Topik halaman saya: daftar film yang pernah aku tonton.
 - Dua bagian utama: Daftar Film, Tambah Film
 - Kolom tabel: judul, tahun, sutradara, rating saya
 - Kolom form: judul film, tahun rilis, rating saya
-- Gambar: film-1.webp
+- Gambar: film.png
 
 ## Catatan penggunaan AI
 
