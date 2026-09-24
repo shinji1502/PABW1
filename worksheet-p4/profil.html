@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Daftar film yang pernah saya tonton beserta rating pribadi saya.">
+  <title>Daftar Film Saya</title>
+</head>
+<body>
+
+  <header>
+    <h1>Daftar Film Saya</h1>
+    <nav aria-label="Navigasi utama">
+      <ul>
+        <li><a href="#bagian-1">Daftar Film</a></li>
+        <li><a href="#bagian-2">Tambah Film</a></li>
+        <li><a href="#film-favorit">Film Favorit</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="bagian-1">
+      <h2>Daftar Film</h2>
+
+      <table>
+        <caption>Film yang pernah saya tonton beserta rating saya</caption>
+        <thead>
+          <tr>
+            <th scope="col">Judul</th>
+            <th scope="col">Tahun</th>
+            <th scope="col">Sutradara</th>
+            <th scope="col">Rating saya (1–10)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Marvel</th>
+            <td>2014</td>
+            <td>Christopher Nolan</td>
+            <td>9</td>
+          </tr>
+          <tr>
+            <th scope="row">Spider-Man</th>
+            <td>2001</td>
+            <td>Sam Raimi</td>
+            <td>9</td>
+          </tr>
+          <tr>
+            <th scope="row">Pengapdi-setan</th>
+            <td>2019</td>
+            <td>Bong Joon-ho</td>
+            <td>8</td>
+          </tr>
+          <tr>
+            <th scope="row">Khodam</th>
+            <td>2016</td>
+            <td>Siti</td>
+            <td>8</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <figure id="film-favorit">
+        <img src="Film.png"
+             alt="Ilustrasi pita film berwarna gelap dengan tiga bingkai berwarna merah, biru, dan kuning, bertuliskan Film Favorit Saya"
+             width="640" height="360" loading="lazy">
+        <figcaption>Ilustrasi film favorit saya.</figcaption>
+      </figure>
+    </section>
+
+    <section id="bagian-2">
+      <h2>Tambah Film</h2>
+
+      <form action="/simpan" method="post">
+        <p>
+          <label for="judul-film">Judul film</label>
+          <input type="text" id="judul-film" name="judul-film" required>
+        </p>
+        <p>
+          <label for="tahun-film">Tahun rilis</label>
+          <input type="number" id="tahun-film" name="tahun-film" min="1888" max="2026" required>
+        </p>
+        <p>
+          <label for="rating-film">Rating saya (1–10)</label>
+          <input type="number" id="rating-film" name="rating-film" min="1" max="10" required>
+        </p>
+        <button type="submit">Simpan</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>Nama= Hideaki Hayyi Shinji</p>
+    <p>NIM= 25523219</p>
+    <p>Tahun= 2026</p>
+  </footer>
+
+</body>
+</html>
