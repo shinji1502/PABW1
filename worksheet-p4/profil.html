@@ -29,7 +29,7 @@
       </nav>
     </div>
   </header>
-  
+
   <main>
     <section id="bagian-1">
       <h2>Daftar Film</h2>
@@ -83,18 +83,21 @@
     <section id="bagian-2">
       <h2>Tambah Film</h2>
 
-      <form action="/simpan" method="post">
-        <p>
+      <form class="kartu" action="/simpan" method="post">
+        <p class="form-kolom">
           <label for="judul-film">Judul film</label>
           <input type="text" id="judul-film" name="judul-film" required>
+          <span class="pesan-galat">Judul film wajib diisi.</span>
         </p>
-        <p>
+        <p class="form-kolom">
           <label for="tahun-film">Tahun rilis</label>
           <input type="number" id="tahun-film" name="tahun-film" min="1888" max="2026" required>
+          <span class="pesan-galat">Tahun harus antara 1888 dan 2026.</span>
         </p>
-        <p>
+        <p class="form-kolom">
           <label for="rating-film">Rating saya (1–10)</label>
           <input type="number" id="rating-film" name="rating-film" min="1" max="10" required>
+          <span class="pesan-galat">Rating harus antara 1 dan 10.</span>
         </p>
         <button type="submit">Simpan</button>
       </form>
