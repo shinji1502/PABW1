@@ -1,25 +1,32 @@
 # PABW1
-## Pertemuan 3 — Halaman profil saya
+## Pertemuan 4 — Design token halaman profil
 
-Topik halaman saya: daftar film yang pernah aku tonton.
+- Berkas gaya yang dibuat: tokens.css, base.css, layout.css, komponen.css, tema.css
+- Warna utama: #2563EB (biru)
 
-- Judul halaman: Daftar Film Saya
-- Deskripsi: daftar film yang pernah aku tonton dan rating filmnya
-- Tautan navigasi: Daftar Film, Tambah Film, Film Favorit
-- Dua bagian utama: Daftar Film, Tambah Film
-- Kolom tabel: judul, tahun, sutradara, rating saya
-- Kolom form: judul film, tahun rilis, rating saya
-- Gambar: film.png
+## Token yang saya tetapkan
+
+| Token | Nilai | Untuk apa |
+|---|---|---|
+| --color-primary | #2563EB | tombol, tautan |
+| --color-fg | #0F172A | warna teks utama |
+| --color-bg | #F8FAFC | latar halaman |
+| --color-focus | #F59E0B | garis fokus papan ketik |
+| --radius-md | 0.5rem | sudut tombol dan kartu |
+| --space-4 | 1rem | jarak standar antar elemen |
+
+Kriteria selesai saya: mengubah --blue-700 di satu baris tokens.css harus mengubah warna tautan, tombol, dan garis kartu, tanpa menyunting berkas lain.
 
 ## Catatan penggunaan AI
 
+
+
 Dibantu AI:
-- Bikin gambar film.png
-- ngejelasin langkah pakai GitHub Desktop
+- Ngasih contoh jawaban buat isian worksheet bagian G
 
 Aku kerjain sendiri:
-- Bikin kerangka profil.html (head, landmark, tabel, form)
-- Milih topik dan ganti isi tabel pakai film yang beneran kutonton
-- Jalanin Lighthouse dan uji manual (Tab, link navigasi, label)
-- menjawab pertanyaan di worksheet
+- Milih warna utama dan ganti nilai token sesuai selera
+- Ngetes navbar, kartu, form, dan tema gelap di peramban
+- Jalanin Lighthouse dan cek kontras
 - Nyimpen semuanya ke GitHub
+- Bikin lima berkas CSS (tokens.css, base.css, layout.css, komponen.css, tema.css) dan nyesuain HTML supaya kelima berkas itu kepakai
