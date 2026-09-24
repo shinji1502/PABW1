@@ -5,20 +5,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Daftar film yang pernah saya tonton beserta rating pribadi saya.">
   <title>Daftar Film Saya</title>
+
+  <link rel="stylesheet" href="tokens.css">
+  <link rel="stylesheet" href="base.css">
+  <link rel="stylesheet" href="layout.css">
+  <link rel="stylesheet" href="komponen.css">
+  <link rel="stylesheet" href="tema.css">
 </head>
 <body>
 
   <header>
-    <h1>Daftar Film Saya</h1>
-    <nav aria-label="Navigasi utama">
-      <ul>
-        <li><a href="#bagian-1">Daftar Film</a></li>
-        <li><a href="#bagian-2">Tambah Film</a></li>
-        <li><a href="#film-favorit">Film Favorit</a></li>
-      </ul>
-    </nav>
-  </header>
+    <input type="checkbox" id="tema" class="pengalih-tema">
 
+    <div class="header-baris">
+      <h1>Daftar Film Saya</h1>
+      <label for="tema" class="tombol-tema">Tema gelap</label>
+      <nav aria-label="Navigasi utama">
+        <ul>
+          <li><a href="#bagian-1">Daftar Film</a></li>
+          <li><a href="#bagian-2">Tambah Film</a></li>
+          <li><a href="#film-favorit">Film Favorit</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  
   <main>
     <section id="bagian-1">
       <h2>Daftar Film</h2>
