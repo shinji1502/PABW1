@@ -32,85 +32,153 @@
       </div>
     </header>
 
-  <main>
-    <section id="bagian-1">
-      <h2>Daftar Film</h2>
+    <div class="isi">
 
-      <table>
-        <caption>Film yang pernah saya tonton beserta rating saya</caption>
-        <thead>
-          <tr>
-            <th scope="col">Judul</th>
-            <th scope="col">Tahun</th>
-            <th scope="col">Sutradara</th>
-            <th scope="col">Rating saya (1–10)</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">Marvel</th>
-            <td>2014</td>
-            <td>Christopher Nolan</td>
-            <td>9</td>
-          </tr>
-          <tr>
-            <th scope="row">Spider-Man</th>
-            <td>2001</td>
-            <td>Sam Raimi</td>
-            <td>9</td>
-          </tr>
-          <tr>
-            <th scope="row">Pengapdi-setan</th>
-            <td>2019</td>
-            <td>Bong Joon-ho</td>
-            <td>8</td>
-          </tr>
-          <tr>
-            <th scope="row">Khodam</th>
-            <td>2016</td>
-            <td>Siti</td>
-            <td>8</td>
-          </tr>
-        </tbody>
-      </table>
+      <aside class="sisi kartu">
+        <h2>Menu</h2>
+        <ul class="menu-samping">
+          <li><a href="#bagian-1">Tabel film</a></li>
+          <li><a href="#galeri-film">Kartu film</a></li>
+          <li><a href="#bagian-2">Form tambah film</a></li>
+        </ul>
+      </aside>
 
-      <figure id="film-favorit">
-        <img src="film-1.jpg"
-             alt="Ilustrasi pita film berwarna gelap dengan tiga bingkai berwarna merah, biru, dan kuning, bertuliskan Film Favorit Saya"
-             width="640" height="360" loading="lazy">
-        <figcaption>Ilustrasi film favorit saya.</figcaption>
-      </figure>
-    </section>
+      <main class="utama">
+        <section id="bagian-1">
+          <h2>Daftar Film</h2>
 
-    <section id="bagian-2">
-      <h2>Tambah Film</h2>
+          <div class="tabel-gulir" tabindex="0" role="region" aria-label="Tabel daftar film">
+            <table>
+              <caption>Film yang pernah saya tonton beserta rating saya</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Judul</th>
+                  <th scope="col">Tahun</th>
+                  <th scope="col">Sutradara</th>
+                  <th scope="col">Rating saya (1–10)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Marvel</th>
+                  <td>2014</td>
+                  <td>Christopher Nolan</td>
+                  <td>9</td>
+                </tr>
+                <tr>
+                  <th scope="row">Spider-Man</th>
+                  <td>2001</td>
+                  <td>Sam Raimi</td>
+                  <td>9</td>
+                </tr>
+                <tr>
+                  <th scope="row">Pengapdi-setan</th>
+                  <td>2019</td>
+                  <td>Bong Joon-ho</td>
+                  <td>8</td>
+                </tr>
+                <tr>
+                  <th scope="row">Khodam</th>
+                  <td>2016</td>
+                  <td>Siti</td>
+                  <td>8</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-      <form class="kartu" action="/simpan" method="post">
-        <p class="form-kolom">
-          <label for="judul-film">Judul film</label>
-          <input type="text" id="judul-film" name="judul-film" required>
-          <span class="pesan-galat">Judul film wajib diisi.</span>
-        </p>
-        <p class="form-kolom">
-          <label for="tahun-film">Tahun rilis</label>
-          <input type="number" id="tahun-film" name="tahun-film" min="1888" max="2026" required>
-          <span class="pesan-galat">Tahun harus antara 1888 dan 2026.</span>
-        </p>
-        <p class="form-kolom">
-          <label for="rating-film">Rating saya (1–10)</label>
-          <input type="number" id="rating-film" name="rating-film" min="1" max="10" required>
-          <span class="pesan-galat">Rating harus antara 1 dan 10.</span>
-        </p>
-        <button type="submit">Simpan</button>
-      </form>
-    </section>
-  </main>
+          <figure id="film-favorit">
+            <img src="film-1.jpg"
+                 alt="Ilustrasi pita film berwarna gelap dengan tiga bingkai berwarna merah, biru, dan kuning, bertuliskan Film Favorit Saya"
+                 width="640" height="360" loading="lazy">
+            <figcaption>Ilustrasi film favorit saya.</figcaption>
+          </figure>
 
-  <footer>
-    <p>Nama= Hideaki Hayyi Shinji</p>
-    <p>NIM= 25523219</p>
-    <p>Tahun= 2026</p>
-  </footer>
+          <!-- galeri: satu kartu = satu baris tabel -->
+          <div class="galeri" id="galeri-film">
+            <article class="kartu sorotan">
+              <h3 class="kartu__judul">Marvel</h3>
+              <div class="kartu__isi">
+                <p>Sutradara: Christopher Nolan</p>
+                <p>Tahun: 2014</p>
+              </div>
+              <div class="kartu__kaki">
+                <span>Rating saya</span>
+                <span class="lencana">9/10</span>
+              </div>
+            </article>
+
+            <article class="kartu">
+              <h3 class="kartu__judul">Spider-Man</h3>
+              <div class="kartu__isi">
+                <p>Sutradara: Sam Raimi</p>
+                <p>Tahun: 2001</p>
+              </div>
+              <div class="kartu__kaki">
+                <span>Rating saya</span>
+                <span class="lencana">9/10</span>
+              </div>
+            </article>
+
+            <article class="kartu">
+              <h3 class="kartu__judul">Pengapdi-setan</h3>
+              <div class="kartu__isi">
+                <p>Sutradara: Bong Joon-ho</p>
+                <p>Tahun: 2019</p>
+              </div>
+              <div class="kartu__kaki">
+                <span>Rating saya</span>
+                <span class="lencana">8/10</span>
+              </div>
+            </article>
+
+            <article class="kartu">
+              <h3 class="kartu__judul">Khodam</h3>
+              <div class="kartu__isi">
+                <p>Sutradara: Siti</p>
+                <p>Tahun: 2016</p>
+              </div>
+              <div class="kartu__kaki">
+                <span>Rating saya</span>
+                <span class="lencana">8/10</span>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="bagian-2">
+          <h2>Tambah Film</h2>
+
+          <form class="kartu" action="/simpan" method="post">
+            <p class="form-kolom">
+              <label for="judul-film">Judul film</label>
+              <input type="text" id="judul-film" name="judul-film" required>
+              <span class="pesan-galat">Judul film wajib diisi.</span>
+            </p>
+            <p class="form-kolom">
+              <label for="tahun-film">Tahun rilis</label>
+              <input type="number" id="tahun-film" name="tahun-film" min="1888" max="2026" required>
+              <span class="pesan-galat">Tahun harus antara 1888 dan 2026.</span>
+            </p>
+            <p class="form-kolom">
+              <label for="rating-film">Rating saya (1–10)</label>
+              <input type="number" id="rating-film" name="rating-film" min="1" max="10" required>
+              <span class="pesan-galat">Rating harus antara 1 dan 10.</span>
+            </p>
+            <button type="submit">Simpan</button>
+          </form>
+        </section>
+      </main>
+
+    </div>
+
+    <footer>
+      <p>Nama= Hideaki Hayyi Shinji</p>
+      <p>NIM= 25523219</p>
+      <p>Tahun= 2026</p>
+    </footer>
+
+  </div>
 
 </body>
 </html>
