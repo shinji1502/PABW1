@@ -1,32 +1,36 @@
-# PABW1
-## Pertemuan 4 — Design token halaman profil
+# Pertemuan 5 — Tata Letak Modern: Flexbox dan Grid
 
-- Berkas gaya yang dibuat: tokens.css, base.css, layout.css, komponen.css, tema.css
-- Warna utama: #2563EB (biru)
+## Kerangka Halaman
 
-## Token yang saya tetapkan
+- .page → auto 1fr auto
+- .isi → 16rem 1fr
+- .galeri → repeat(auto-fit, minmax(16rem, 1fr))
 
-| Token | Nilai | Untuk apa |
-|---|---|---|
-| --color-primary | #2563EB | tombol, tautan |
-| --color-fg | #0F172A | warna teks utama |
-| --color-bg | #F8FAFC | latar halaman |
-| --color-focus | #F59E0B | garis fokus papan ketik |
-| --radius-md | 0.5rem | sudut tombol dan kartu |
-| --space-4 | 1rem | jarak standar antar elemen |
+## Pembagian Layout
 
-Kriteria selesai saya: mengubah --blue-700 di satu baris tokens.css harus mengubah warna tautan, tombol, dan garis kartu, tanpa menyunting berkas lain.
+(Grid)
+- .page
+- .isi
+- .galeri
 
-## Catatan penggunaan AI
+(Flexbox)
+- Navbar
+- Menu samping
+- .kartu__kaki
+- Form
 
+## Penempatan
 
+- Sidebar dan konten pakai grid-area (sisi dan utama)
+- Kartu Marvel pakai grid-column: span 2
 
-Dibantu AI:
-- Ngasih contoh jawaban buat isian worksheet bagian G
+### Dibantu AI
+- Bantu menyelesaikan error di script layout.css, komponen.css, profil.html.
+- Kasih contoh jawaban buat isi worksheet.
 
-Aku kerjain sendiri:
-- Milih warna utama dan ganti nilai token sesuai selera
-- Ngetes navbar, kartu, form, dan tema gelap di peramban
-- Jalanin Lighthouse dan cek kontras
-- Nyimpen semuanya ke GitHub
-- Bikin lima berkas CSS (tokens.css, base.css, layout.css, komponen.css, tema.css) dan nyesuain HTML supaya kelima berkas itu kepakai
+### Saya kerjakan sendiri
+- Nyalin hasil P4 ke folder worksheet-p5.
+- Cek tampilan di browser (360px, 1280px, dan tema gelap).
+- Menyesuaikan dan memahami kode yang digunakan.
+- Menjawab pertanyaan di worksheet.
+- Upload hasil ke GitHub.
