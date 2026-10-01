@@ -1,36 +1,25 @@
-# Pertemuan 5 — Tata Letak Modern: Flexbox dan Grid
+## Pertemuan 6 — Responsif Mobile-First
 
-## Kerangka Halaman
+Melanjutkan halaman **Daftar Film Saya** dari Pertemuan 5 dan menambahkan `responsif.css`.
 
-- .page → auto 1fr auto
-- .isi → 16rem 1fr
-- .galeri → repeat(auto-fit, minmax(16rem, 1fr))
+### Yang diubah
 
-## Pembagian Layout
+- Menambahkan responsif.css untuk tampilan mobile, tablet, dan desktop.
+- profil.html ditambahkan link responsif.css serta class content dan grid.
+- Beberapa aturan layout yang lama dipindahkan ke`responsif.css.
+- Menghapus aturan yang tidak diperlukan dari layout.css dan komponen.css.
+- Memperbaiki tombol tema supaya bisa berganti dari gelap ke terang.
 
-(Grid)
-- .page
-- .isi
-- .galeri
+### Bug tombol tema
 
-(Flexbox)
-- Navbar
-- Menu samping
-- .kartu__kaki
-- Form
+Sebelumnya tema gelap masih dipengaruhi oleh pengaturan tema sistem. Akibatnya, saat sistem sedang dark mode, tombol tidak bisa kembali ke mode terang.
 
-## Penempatan
+Solusinya, aturan tema dari sistem dihapus sehingga tema hanya diatur lewat tombol.
 
-- Sidebar dan konten pakai grid-area (sisi dan utama)
-- Kartu Marvel pakai grid-column: span 2
+### Penggunaan AI
 
-### Dibantu AI
-- Bantu menyelesaikan error di script layout.css, komponen.css, profil.html.
-- Kasih contoh jawaban buat isi worksheet.
+Saya menggunakan Claude untuk membantu:
+- Membuat dan menyesuaikan `responsif.css`.
+- Membantu mencari dan memperbaiki bug tema.
 
-### Saya kerjakan sendiri
-- Nyalin hasil P4 ke folder worksheet-p5.
-- Cek tampilan di browser (360px, 1280px, dan tema gelap).
-- Menyesuaikan dan memahami kode yang digunakan.
-- Menjawab pertanyaan di worksheet.
-- Upload hasil ke GitHub.
+Sedangkan pengujian di DevTools pada **360px, 768px, dan 1.280px**, screenshot, pengecekan hasil, dan pengumpulan ke GitHub saya lakukan sendiri. dll
