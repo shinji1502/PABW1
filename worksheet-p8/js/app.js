@@ -1,6 +1,6 @@
 const nama = "Hideaki Hayyi Shinji";
 const peran = "Mahasiswa Informatika yang suka nonton film basket";
-const keahlian = ["mudah menghafal, mudah bergaul"]; 
+const keahlian = ["HTML", "CSS", "JavaScript"]; 
 const jumlahFilmDitonton = 4;
 
 const profil = {
@@ -33,6 +33,7 @@ const daftarFilm = [
 ];
 
 console.log("== LEMBAR D ==");
+console.table(profil.keahlian);
 console.table(daftarFilm);
 
 const filmRatingTinggi = daftarFilm.filter((film) => film.rating >= 9);
@@ -42,7 +43,7 @@ const filmDicari = daftarFilm.find((film) => film.judul === "Spider-Man");
 console.log(filmDicari);
 
 const judulSemuaFilm = daftarFilm.map((film) => film.judul);
-console.log(judulSemuaFilm);
+console.table(judulSemuaFilm);
 
 const filmUrutTahun = [...daftarFilm].sort((a, b) => a.tahun - b.tahun);
 console.table(filmUrutTahun);
