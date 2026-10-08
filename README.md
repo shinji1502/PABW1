@@ -1,25 +1,23 @@
-## Pertemuan 6 — Responsif Mobile-First
+# Pertemuan 8 — Data jadi JavaScript
 
-Melanjutkan halaman **Daftar Film Saya** dari Pertemuan 5 dan menambahkan `responsif.css`.
+Lanjutan **"Daftar Film Saya"** dari Pertemuan 6, disalin ke folder `worksheet-p8/`, ditambah folder `js/` berisi `app.js`.
 
-### Yang diubah
+## Yang Ditambah
+* **`js/app.js`**: Berisi data profil (`nama`, `peran`, `keahlian`), `daftarFilm` (*array of object*), 2 fungsi murni (`buatPerkenalan`, `formatKeahlian`), serta penggunaan *array methods* (`map`, `filter`, `find`) yang diperiksa melalui `console.table()`.
+* **`profil.html`**: Menambahkan baris `<script type="module" src="js/app.js"></script>` tepat sebelum tag penutup `</body>`. CSS dan struktur HTML tidak diubah.
+* *Catatan*: Data belum ditampilkan ke antarmuka halaman HTML (akan dipelajari pada Pertemuan 9 menggunakan DOM). Minggu ini seluruh pengujian data dicek melalui **Console DevTools**.
 
-- Menambahkan responsif.css untuk tampilan mobile, tablet, dan desktop.
-- profil.html ditambahkan link responsif.css serta class content dan grid.
-- Beberapa aturan layout yang lama dipindahkan ke`responsif.css.
-- Menghapus aturan yang tidak diperlukan dari layout.css dan komponen.css.
-- Memperbaiki tombol tema supaya bisa berganti dari gelap ke terang.
 
-### Bug tombol tema
+## Catatan Penggunaan AI
 
-Sebelumnya tema gelap masih dipengaruhi oleh pengaturan tema sistem. Akibatnya, saat sistem sedang dark mode, tombol tidak bisa kembali ke mode terang.
+### Dibantu AI:
+* Memperbaiki galat `404 Not Found` pada jalur skrip (*script path*).
+* Menyusun penggunaan `console.table()` 
+* dibantu benerin error di script app.js
 
-Solusinya, aturan tema dari sistem dihapus sehingga tema hanya diatur lewat tombol.
-
-### Penggunaan AI
-
-Saya menggunakan Claude untuk membantu:
-- Membuat dan menyesuaikan `responsif.css`.
-- Membantu mencari dan memperbaiki bug tema.
-
-Sedangkan pengujian di DevTools pada **360px, 768px, dan 1.280px**, screenshot, pengecekan hasil, dan pengumpulan ke GitHub saya lakukan sendiri. dll
+### Dikerjakan Sendiri:
+* Membuka halaman menggunakan `python -m http.server 8000` dan memastikan Console bersih dari pesan merah.
+* Menguji 3 kasus galat di Lembar E secara langsung di peramban dan mengambil 3 *screenshot* sebagai bukti.
+* Menjalankan *breakpoint debugging* di panel DevTools Sources.
+* Mengisi Lembar E.5 untuk Kasus 2 & 3 berdasarkan hasil pengujian mandiri.
+* Menyimpan (*commit*) dan mengunggah (*push*) seluruh pekerjaan ke GitHub.
