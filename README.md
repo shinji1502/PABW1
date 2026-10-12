@@ -1,23 +1,23 @@
-# Pertemuan 8 — Data jadi JavaScript
+Pertemuan 9 — Data nongol di halaman (DOM + Event)
+Lanjutan "Daftar Film Saya" dari Pertemuan 8, disalin ke folder worksheet-p9/.
 
-Lanjutan **"Daftar Film Saya"** dari Pertemuan 6, disalin ke folder `worksheet-p8/`, ditambah folder `js/` berisi `app.js`.
+Yang baru:
+- js/dom.js — render kartu film dari daftarFilm (bukan HTML tulis tangan lagi), filter kategori dengan 1 pendengar di #filter, dan validasi form tanpa reload halaman.
+- app.js — ditambah field kategori per film, dan export { daftarFilm } biar bisa dipakai dom.js.
+- profil.html — galeri film sekarang kosong dari sananya (diisi JS), ditambah baris tombol filter + pesan "kosong", form dapat id dan novalidate.
+- komponen.css — gaya baris filter baru, pesan galat sekarang dikontrol atribut hidden dari JS (bukan CSS :has() lagi).
 
-## Yang Ditambah
-* **`js/app.js`**: Berisi data profil (`nama`, `peran`, `keahlian`), `daftarFilm` (*array of object*), 2 fungsi murni (`buatPerkenalan`, `formatKeahlian`), serta penggunaan *array methods* (`map`, `filter`, `find`) yang diperiksa melalui `console.table()`.
-* **`profil.html`**: Menambahkan baris `<script type="module" src="js/app.js"></script>` tepat sebelum tag penutup `</body>`. CSS dan struktur HTML tidak diubah.
-* *Catatan*: Data belum ditampilkan ke antarmuka halaman HTML (akan dipelajari pada Pertemuan 9 menggunakan DOM). Minggu ini seluruh pengujian data dicek melalui **Console DevTools**.
+Yang berubah secara tampilan:
+Kartu "Marvel" yang dulu lebih besar (class sorotan, span 2 kolom) sekarang jadi kartu biasa, soalnya semua kartu digambar dari fungsi yang sama (buatKartu()). Nggak ada lagi kartu "unggulan".
 
+Dibantu AI:
+- Nyesuain struktur app.js, profil.html, sama komponen.css biar nge-link dan nyambung mulus ke js/dom.js.
+- Ngerapihin logika dasar buat render data array film ke halaman web.
+- Nyusun kerangka validasi form biar fungsi error-nya jalan pas disubmit.
 
-## Catatan Penggunaan AI
-
-### Dibantu AI:
-* Memperbaiki galat `404 Not Found` pada jalur skrip (*script path*).
-* Menyusun penggunaan `console.table()` 
-* dibantu benerin error di script app.js
-
-### Dikerjakan Sendiri:
-* Membuka halaman menggunakan `python -m http.server 8000` dan memastikan Console bersih dari pesan merah.
-* Menguji 3 kasus galat di Lembar E secara langsung di peramban dan mengambil 3 *screenshot* sebagai bukti.
-* Menjalankan *breakpoint debugging* di panel DevTools Sources.
-* Mengisi Lembar E.5 untuk Kasus 2 & 3 berdasarkan hasil pengujian mandiri.
-* Menyimpan (*commit*) dan mengunggah (*push*) seluruh pekerjaan ke GitHub.
+Aku kerjain sendiri:
+- Nyalain Live Server di browser buat mastiin semua pemilih/selector clean dari error null.
+- Nulis skrip utama di js/dom.js (mulai dari fungsi render, filter pakai event delegation, sampai validasi form interaktif).
+- Nge-tes langsung fitur filter, render kartu, sama validasi form di browser (ngisi lembar B.3, C.2, dan D.3).
+- Eksperimen nyoba 3 kasus error di Lembar E, benerin kodenya, terus ambil 3 screenshot bukti error.
+- Commit dan push semua kodenya ke repository GitHub sampai aman.
