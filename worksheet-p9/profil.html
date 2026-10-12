@@ -95,61 +95,22 @@
             <figcaption>Ilustrasi film favorit saya.</figcaption>
           </figure>
 
-          <div class="galeri grid" id="galeri-film">
-            <article class="kartu sorotan">
-              <h3 class="kartu__judul">Marvel</h3>
-              <div class="kartu__isi">
-                <p>Sutradara: Christopher Nolan</p>
-                <p>Tahun: 2014</p>
-              </div>
-              <div class="kartu__kaki">
-                <span>Rating saya</span>
-                <span class="lencana">9/10</span>
-              </div>
-            </article>
-
-            <article class="kartu">
-              <h3 class="kartu__judul">Spider-Man</h3>
-              <div class="kartu__isi">
-                <p>Sutradara: Sam Raimi</p>
-                <p>Tahun: 2001</p>
-              </div>
-              <div class="kartu__kaki">
-                <span>Rating saya</span>
-                <span class="lencana">9/10</span>
-              </div>
-            </article>
-
-            <article class="kartu">
-              <h3 class="kartu__judul">Pengapdi-setan</h3>
-              <div class="kartu__isi">
-                <p>Sutradara: Bong Joon-ho</p>
-                <p>Tahun: 2019</p>
-              </div>
-              <div class="kartu__kaki">
-                <span>Rating saya</span>
-                <span class="lencana">8/10</span>
-              </div>
-            </article>
-
-            <article class="kartu">
-              <h3 class="kartu__judul">Khodam</h3>
-              <div class="kartu__isi">
-                <p>Sutradara: Siti</p>
-                <p>Tahun: 2016</p>
-              </div>
-              <div class="kartu__kaki">
-                <span>Rating saya</span>
-                <span class="lencana">8/10</span>
-              </div>
-            </article>
+          <div class="baris-filter" id="filter">
+            <button type="button" data-kategori="semua" class="aktif">Semua</button>
+            <button type="button" data-kategori="Aksi">Aksi</button>
+            <button type="button" data-kategori="Horror">Horror</button>
+            <button type="button" data-kategori="Animasi">Animasi</button>
           </div>
+
+          <p class="pesan-kosong" id="kosong" hidden>Belum ada film buat kategori ini.</p>
+
+          <div class="galeri grid" id="galeri-film"></div>
         </section>
 
         <section id="bagian-2">
           <h2>Tambah Film</h2>
 
-          <form class="kartu" action="/simpan" method="post">
+          <form class="kartu" id="form-film" action="/simpan" method="post" novalidate>
             <p class="form-kolom">
               <label for="judul-film">Judul film</label>
               <input type="text" id="judul-film" name="judul-film" required>
@@ -181,5 +142,6 @@
   </div>
 
   <script type="module" src="js/app.js"></script>
+  <script type="module" src="js/dom.js"></script>
 </body>
 </html>

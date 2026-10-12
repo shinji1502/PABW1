@@ -26,14 +26,13 @@ console.log(buatPerkenalan(profil));
 console.log(formatKeahlian(profil.keahlian));
 
 const daftarFilm = [
-  { judul: "Marvel", tahun: 2014, sutradara: "Christopher Nolan", rating: 9 },
-  { judul: "Spider-Man", tahun: 2001, sutradara: "Sam Raimi", rating: 9 },
-  { judul: "Pengapdi-setan", tahun: 2019, sutradara: "Bong Joon-ho", rating: 8 },
-  { judul: "Khodam", tahun: 2016, sutradara: "Siti", rating: 8 },
+  { judul: "Marvel", tahun: 2014, sutradara: "Christopher Nolan", rating: 9, kategori: "Aksi" },
+  { judul: "Spider-Man", tahun: 2001, sutradara: "Sam Raimi", rating: 9, kategori: "Aksi" },
+  { judul: "Pengapdi-setan", tahun: 2019, sutradara: "Bong Joon-ho", rating: 8, kategori: "Horror" },
+  { judul: "Khodam", tahun: 2016, sutradara: "Siti", rating: 8, kategori: "Horror" },
 ];
 
 console.log("== LEMBAR D ==");
-console.table(profil.keahlian);
 console.table(daftarFilm);
 
 const filmRatingTinggi = daftarFilm.filter((film) => film.rating >= 9);
@@ -43,10 +42,12 @@ const filmDicari = daftarFilm.find((film) => film.judul === "Spider-Man");
 console.log(filmDicari);
 
 const judulSemuaFilm = daftarFilm.map((film) => film.judul);
-console.table(judulSemuaFilm);
+console.log(judulSemuaFilm);
 
 const filmUrutTahun = [...daftarFilm].sort((a, b) => a.tahun - b.tahun);
 console.table(filmUrutTahun);
-console.table(daftarFilm);
+console.table(daftarFilm); 
 
 console.log("== app.js kelar jalan, gak ada error ==");
+
+export { daftarFilm };
