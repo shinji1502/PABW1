@@ -13,7 +13,7 @@
 .galeri .kartu {
   display: grid;
   align-content: start;
-  gap: var(--space-2);
+  gap: var(--space-2); 
   min-height: 14rem;
 }
 
@@ -22,7 +22,7 @@
 }
 
 .kartu__judul {
-  overflow-wrap: anywhere;
+  overflow-wrap: anywhere; 
 }
 
 .kartu__kaki {
@@ -171,6 +171,12 @@ input:user-invalid {
 
 .pesan-kosong {
   color: var(--color-fg);
+  font-size: var(--text-sm);
+  margin-bottom: var(--space-4);
+}
+
+.pesan-galat-global {
+  color: var(--color-danger);
   font-size: var(--text-sm);
   margin-bottom: var(--space-4);
 }
