@@ -141,8 +141,8 @@ form.addEventListener("submit", (event) => {
 
 tombolKirim.disabled = true; 
 
-console.log("== dom.js kelar jalan, gak ada error ==");
-
 window.render = render;
 window.aturMemuat = aturMemuat;
 window.tampilkanGalat = tampilkanGalat;
+
+console.log("== dom.js kelar jalan, gak ada error ==");
