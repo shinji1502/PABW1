@@ -1,13 +1,15 @@
-import { daftarFilm } from "./app.js";
-
 const wadah = document.querySelector("#galeri-film");
 const barisFilter = document.querySelector("#filter");
 const kosong = document.querySelector("#kosong");
+const muat = document.querySelector("#muat");   
+const galat = document.querySelector("#galat"); 
 const form = document.querySelector("#form-film");
 
-[wadah, barisFilter, kosong, form].forEach((el, i) => {
+[wadah, barisFilter, kosong, muat, galat, form].forEach((el, i) => {
   if (!el) console.error(`Elemen nomor ${i} nggak ketemu, cek lagi id-nya di profil.html`);
 });
+
+let semuaProyek = [];
 
 function buatKartu(film) {
   const artikel = document.createElement("article");
@@ -38,19 +40,33 @@ function buatKartu(film) {
   return artikel;
 }
 
-function render(daftar) {
+export function render(daftar) {
   wadah.textContent = "";              
-
   if (daftar.length === 0) {           
     kosong.hidden = false;
     return;
   }
   kosong.hidden = true;
 
-  daftar.forEach((film) => wadah.append(buatKartu(film))); // 3. isi ulang
+  daftar.forEach((film) => wadah.append(buatKartu(film))); 
 }
 
-render(daftarFilm);
+export function aturMemuat(sedangMemuat) {
+  muat.hidden = !sedangMemuat;
+}
+
+export function tampilkanGalat(pesan) {
+  if (pesan) {
+    galat.textContent = pesan;
+    galat.hidden = false;
+  } else {
+    galat.hidden = true; 
+  }
+}
+
+export function aturSumberFilter(daftar) {
+  semuaProyek = daftar;
+}
 
 function tandaiTombolAktif(tombolAktif) {
   document.querySelectorAll("#filter button").forEach((tombol) => {
@@ -65,8 +81,8 @@ barisFilter.addEventListener("click", (event) => {
   const kategori = tombol.dataset.kategori;
   const terpilih =
     kategori === "semua"
-      ? daftarFilm
-      : daftarFilm.filter((film) => film.kategori === kategori);
+      ? semuaProyek
+      : semuaProyek.filter((film) => film.kategori === kategori);
 
   tandaiTombolAktif(tombol);
   render(terpilih);
@@ -84,7 +100,7 @@ function cekKolom(input) {
   let sah = true;
 
   if (input.value.trim() === "") {
-    sah = false;
+    sah = false; 
   } else if (input.type === "number") {
     const angka = Number(input.value);
     if (angka < Number(input.min) || angka > Number(input.max)) sah = false;
@@ -106,7 +122,6 @@ semuaKolom.forEach((input) => input.addEventListener("input", cekSemuaKolom));
 
 form.addEventListener("submit", (event) => {
   event.preventDefault(); 
-
   if (!cekSemuaKolom()) {
     const kolomSalah = semuaKolom.find(
       (input) => input.getAttribute("aria-invalid") === "true"
@@ -127,3 +142,7 @@ form.addEventListener("submit", (event) => {
 tombolKirim.disabled = true; 
 
 console.log("== dom.js kelar jalan, gak ada error ==");
+
+window.render = render;
+window.aturMemuat = aturMemuat;
+window.tampilkanGalat = tampilkanGalat;
