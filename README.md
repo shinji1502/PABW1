@@ -1,23 +1,26 @@
-Pertemuan 9 — Data nongol di halaman (DOM + Event)
-Lanjutan "Daftar Film Saya" dari Pertemuan 8, disalin ke folder worksheet-p9/.
+Pertemuan 10 — JavaScript Asinkron: fetch, Promise, dan JSON
+Lanjutan "Daftar Film Saya" dari Pertemuan 9, disalin ke folder worksheet-p10/.
 
 Yang baru:
-- js/dom.js — render kartu film dari daftarFilm (bukan HTML tulis tangan lagi), filter kategori dengan 1 pendengar di #filter, dan validasi form tanpa reload halaman.
-- app.js — ditambah field kategori per film, dan export { daftarFilm } biar bisa dipakai dom.js.
-- profil.html — galeri film sekarang kosong dari sananya (diisi JS), ditambah baris tombol filter + pesan "kosong", form dapat id dan novalidate.
-- komponen.css — gaya baris filter baru, pesan galat sekarang dikontrol atribut hidden dari JS (bukan CSS :has() lagi).
+- data/proyek.json — berkas JSON lokal berisi data daftar film/proyek lengkap dengan ID, judul, tahun, dan kategori.
+- js/api.js — lapisan data baru yang bertugas memanggil data via fetch(), memeriksa respons.ok, serta mengekspor fungsi ambilProyek().
+- js/app.js — sekarang bertugas sebagai perakit; memanggil ambilProyek() dari api.js pakai async/await dan try/catch, lalu ngirim datanya ke render() di dom.js.
+- profil.html — ditambah elemen pesan penanda keadaan "<p id="muat" hidden>Memuat data...</p>" untuk indikator loading.
 
 Yang berubah secara tampilan:
-Kartu "Marvel" yang dulu lebih besar (class sorotan, span 2 kolom) sekarang jadi kartu biasa, soalnya semua kartu digambar dari fungsi yang sama (buatKartu()). Nggak ada lagi kartu "unggulan".
+- Data film nggak di-load dari array lokal di app.js lagi, melainkan ditarik secara asinkron langsung dari tautan raw GitHub (raw.githubusercontent.com) saat halaman dibuka.
+- Antarmuka memiliki 4 keadaan visual: Memuat (loading), Berhasil (kartu film tampil), Gagal (pesan error jika jaringan mati/404), dan Kosong (pesan jika data array kosong).
+
+Catatan penggunaan AI:
 
 Dibantu AI:
-- Nyesuain struktur app.js, profil.html, sama komponen.css biar nge-link dan nyambung mulus ke js/dom.js.
-- Ngerapihin logika dasar buat render data array film ke halaman web.
-- Nyusun kerangka validasi form biar fungsi error-nya jalan pas disubmit.
+- dibantu menambahkan script bagian api.js dan app.js.
+- Membantu pemetaan format JSON dan penanganan error 404/galat jaringan.
 
 Aku kerjain sendiri:
-- Nyalain Live Server di browser buat mastiin semua pemilih/selector clean dari error null.
-- Nulis skrip utama di js/dom.js (mulai dari fungsi render, filter pakai event delegation, sampai validasi form interaktif).
-- Nge-tes langsung fitur filter, render kartu, sama validasi form di browser (ngisi lembar B.3, C.2, dan D.3).
-- Eksperimen nyoba 3 kasus error di Lembar E, benerin kodenya, terus ambil 3 screenshot bukti error.
-- Commit dan push semua kodenya ke repository GitHub sampai aman.
+- Bikin file data/proyek.json dan mindahin data array film ke bentuk JSON yang valid.
+- Nambahin elemen pesan muat/loading (#muat) di profil.html dan ngatur atribut hidden-nya.
+- Menguji 4 keadaan antarmuka (berhasil, gagal, memuat, kosong) di DevTools panel Network.
+- Mengambil URL Raw GitHub (raw.githubusercontent.com) dari repository PABW1 dan menetapkannya di ALAMAT pada js/api.js.
+- Mengisi seluruh evaluasi mandiri, tabel refleksi, dan pertanyaan tiket keluar di lembar F.
+- Commit dan push semua perubahan proyek Pertemuan 10 ke GitHub.
