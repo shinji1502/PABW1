@@ -1,30 +1,40 @@
-const wadah = document.querySelector("#galeri-film");
-const barisFilter = document.querySelector("#filter");
-const kosong = document.querySelector("#kosong");
-const muat = document.querySelector("#muat");   
-const galat = document.querySelector("#galat"); 
-const form = document.querySelector("#form-film");
+import { saring } from "./data.js";
 
-[wadah, barisFilter, kosong, muat, galat, form].forEach((el, i) => {
+const wadah = document.querySelector("#galeri-film");
+const kosong = document.querySelector("#kosong");
+const muatEl = document.querySelector("#muat");
+const galatEl = document.querySelector("#galat");
+
+const kolomJudul = document.querySelector("#judul-film");
+const kolomTahun = document.querySelector("#tahun-film");
+const kolomRating = document.querySelector("#rating-film");
+const semuaKolom = [kolomJudul, kolomTahun, kolomRating];
+const tombolKirim = document.querySelector('#form-film button[type="submit"]');
+
+[wadah, kosong, muatEl, galatEl, ...semuaKolom, tombolKirim].forEach((el, i) => {
   if (!el) console.error(`Elemen nomor ${i} nggak ketemu, cek lagi id-nya di profil.html`);
 });
 
-let semuaProyek = [];
+function tandaiTombolAktif(kategoriAktif) {
+  document.querySelectorAll("#filter button").forEach((tombol) => {
+    tombol.classList.toggle("aktif", tombol.dataset.kategori === kategoriAktif);
+  });
+}
 
-function buatKartu(film) {
+export function buatKartu(proyek, favorit) {
   const artikel = document.createElement("article");
   artikel.className = "kartu";
 
   const judul = document.createElement("h3");
   judul.className = "kartu__judul";
-  judul.textContent = film.judul;
+  judul.textContent = proyek.judul;
 
   const isi = document.createElement("div");
   isi.className = "kartu__isi";
   const sutradara = document.createElement("p");
-  sutradara.textContent = `Sutradara: ${film.sutradara}`;
+  sutradara.textContent = `Sutradara: ${proyek.sutradara}`;
   const tahun = document.createElement("p");
-  tahun.textContent = `Tahun: ${film.tahun}`;
+  tahun.textContent = `Tahun: ${proyek.tahun}`;
   isi.append(sutradara, tahun);
 
   const kaki = document.createElement("div");
@@ -33,116 +43,65 @@ function buatKartu(film) {
   label.textContent = "Rating saya";
   const lencana = document.createElement("span");
   lencana.className = "lencana";
-  lencana.textContent = `${film.rating}/10`;
-  kaki.append(label, lencana);
+  lencana.textContent = `${proyek.rating}/10`;
 
+  const tombolFavorit = document.createElement("button");
+  tombolFavorit.type = "button";
+  tombolFavorit.className = "favorit";
+  tombolFavorit.dataset.id = proyek.id;
+  tombolFavorit.textContent = favorit.includes(proyek.id) ? "★" : "☆";
+
+  kaki.append(label, lencana, tombolFavorit);
   artikel.append(judul, isi, kaki);
   return artikel;
 }
 
-export function render(daftar) {
-  wadah.textContent = "";              
-  if (daftar.length === 0) {           
+export function render(state) {
+  tandaiTombolAktif(state.kategoriAktif);
+  wadah.textContent = "";
+  const tampil = saring(state.daftarProyek, state.kategoriAktif);
+  if (tampil.length === 0) {
     kosong.hidden = false;
     return;
   }
   kosong.hidden = true;
-
-  daftar.forEach((film) => wadah.append(buatKartu(film))); 
+  tampil.forEach((item) => wadah.append(buatKartu(item, state.favorit)));
 }
 
 export function aturMemuat(sedangMemuat) {
-  muat.hidden = !sedangMemuat;
+  muatEl.hidden = !sedangMemuat;
 }
 
 export function tampilkanGalat(pesan) {
   if (pesan) {
-    galat.textContent = pesan;
-    galat.hidden = false;
+    galatEl.textContent = pesan;
+    galatEl.hidden = false;
   } else {
-    galat.hidden = true; 
+    galatEl.hidden = true;
   }
 }
 
-export function aturSumberFilter(daftar) {
-  semuaProyek = daftar;
-}
-
-function tandaiTombolAktif(tombolAktif) {
-  document.querySelectorAll("#filter button").forEach((tombol) => {
-    tombol.classList.toggle("aktif", tombol === tombolAktif);
-  });
-}
-
-barisFilter.addEventListener("click", (event) => {
-  const tombol = event.target.closest("button");
-  if (!tombol) return; 
-
-  const kategori = tombol.dataset.kategori;
-  const terpilih =
-    kategori === "semua"
-      ? semuaProyek
-      : semuaProyek.filter((film) => film.kategori === kategori);
-
-  tandaiTombolAktif(tombol);
-  render(terpilih);
-});
-
-
-const kolomJudul = document.querySelector("#judul-film");
-const kolomTahun = document.querySelector("#tahun-film");
-const kolomRating = document.querySelector("#rating-film");
-const semuaKolom = [kolomJudul, kolomTahun, kolomRating];
-const tombolKirim = form.querySelector('button[type="submit"]');
-
-function cekKolom(input) {
+export function cekKolom(input) {
   const pesan = input.closest(".form-kolom").querySelector(".pesan-galat");
   let sah = true;
 
   if (input.value.trim() === "") {
-    sah = false; 
+    sah = false;
   } else if (input.type === "number") {
     const angka = Number(input.value);
     if (angka < Number(input.min) || angka > Number(input.max)) sah = false;
   }
 
   input.setAttribute("aria-invalid", String(!sah));
-  pesan.hidden = sah; 
+  pesan.hidden = sah;
   return sah;
 }
 
-function cekSemuaKolom() {
+export function cekSemuaKolom() {
   const hasil = semuaKolom.map(cekKolom);
   const semuaSah = hasil.every(Boolean);
   tombolKirim.disabled = !semuaSah;
   return semuaSah;
 }
 
-semuaKolom.forEach((input) => input.addEventListener("input", cekSemuaKolom));
-
-form.addEventListener("submit", (event) => {
-  event.preventDefault(); 
-  if (!cekSemuaKolom()) {
-    const kolomSalah = semuaKolom.find(
-      (input) => input.getAttribute("aria-invalid") === "true"
-    );
-    kolomSalah?.focus();
-    return;
-  }
-
-  console.log("Form sah, siap dikirim:", {
-    judul: kolomJudul.value,
-    tahun: kolomTahun.value,
-    rating: kolomRating.value,
-  });
-  form.reset();
-  cekSemuaKolom(); 
-});
-
-tombolKirim.disabled = true; 
-
-window.render = render;
-window.aturMemuat = aturMemuat;
-window.tampilkanGalat = tampilkanGalat;
-
-console.log("== dom.js kelar jalan, gak ada error ==");
+tombolKirim.disabled = true;

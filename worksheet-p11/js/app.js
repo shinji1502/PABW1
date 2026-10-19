@@ -1,49 +1,24 @@
 import { ambilProyek } from "./api.js";
-import { render, tampilkanGalat, aturMemuat, aturSumberFilter } from "./dom.js";
+import { isiProyek, pulihkan, muat } from "./state.js";
+import { tampilkanGalat, aturMemuat } from "./dom.js";
+import { pasangPendengar } from "./events.js";
+import { profil, buatPerkenalan, formatKeahlian } from "./data.js";
 
-const nama = "Hideaki Hayyi Shinji";
-const peran = "Mahasiswa Informatika yang suka ngoding sambil nonton film";
-const keahlian = ["HTML", "CSS", "JavaScript"]; 
-const jumlahFilmDitonton = 4; 
-
-const profil = {
-  nama,
-  peran,
-  keahlian,
-};
-
-const kalimatProfil = `Nama saya ${profil.nama}, dan saya belajar ${profil.keahlian.length} hal.`;
-
-console.log("== LEMBAR B ==");
-console.log(profil);
-console.log(kalimatProfil);
-
-function buatPerkenalan({ nama, peran }) {
-  return `${nama} — ${peran}`;
-}
-
-const formatKeahlian = (daftar) => daftar.join(" · ");
-
-console.log("== LEMBAR C ==");
 console.log(buatPerkenalan(profil));
 console.log(formatKeahlian(profil.keahlian));
 
-async function muat() {
-  aturMemuat(true);        
-  tampilkanGalat(null);    
-
+async function mulai() {
+  pulihkan(muat());
+  pasangPendengar();
+  aturMemuat(true);
   try {
-    const data = await ambilProyek(); 
-    aturSumberFilter(data);           
-    render(data);                    
-  } catch (galatnya) {
+    isiProyek(await ambilProyek()); 
+  } catch (galat) {
     tampilkanGalat("Data gagal dimuat. Periksa koneksi, lalu muat ulang halaman.");
-    console.error(galatnya.message); 
+    console.error(galat.message);
   } finally {
-    aturMemuat(false);      
+    aturMemuat(false);
   }
 }
 
-muat();
-
-console.log("== app.js kelar jalan, gak ada error ==");
+mulai();
