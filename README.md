@@ -1,26 +1,35 @@
-Pertemuan 10 — JavaScript Asinkron: fetch, Promise, dan JSON
-Lanjutan "Daftar Film Saya" dari Pertemuan 9, disalin ke folder worksheet-p10/.
+Pertemuan 11 — Modul, State, dan Penyimpanan Klien
+Lanjutan “Daftar Film Saya” dari Pertemuan 10, disalin ke folder worksheet-p11/.
 
 Yang baru:
-- data/proyek.json — berkas JSON lokal berisi data daftar film/proyek lengkap dengan ID, judul, tahun, dan kategori.
-- js/api.js — lapisan data baru yang bertugas memanggil data via fetch(), memeriksa respons.ok, serta mengekspor fungsi ambilProyek().
-- js/app.js — sekarang bertugas sebagai perakit; memanggil ambilProyek() dari api.js pakai async/await dan try/catch, lalu ngirim datanya ke render() di dom.js.
-- profil.html — ditambah elemen pesan penanda keadaan "<p id="muat" hidden>Memuat data...</p>" untuk indikator loading.
+
+js/data.js — modul data: objek profil, fungsi buatPerkenalan() dan formatKeahlian() (dipindah dari app.js), serta fungsi murni saring() untuk menyaring daftar proyek berdasarkan kategori.
+js/state.js — satu objek state tunggal (kategoriAktif, favorit, daftarProyek) beserta fungsi-fungsi pengubahnya (pilihKategori, tambahFavorit, isiProyek, aturUlang). Juga berisi simpan()/muat()/pulihkan() untuk localStorage, lengkap dengan penanda versi skema.
+js/events.js — seluruh addEventListener dikumpulkan di sini (klik filter, klik favorit, klik atur ulang, validasi form), dipanggil lewat satu fungsi pasangPendengar().
+Tombol favorit (★/☆) di tiap kartu film, dan tombol “Atur ulang” baru di profil.html.
 
 Yang berubah secara tampilan:
-- Data film nggak di-load dari array lokal di app.js lagi, melainkan ditarik secara asinkron langsung dari tautan raw GitHub (raw.githubusercontent.com) saat halaman dibuka.
-- Antarmuka memiliki 4 keadaan visual: Memuat (loading), Berhasil (kartu film tampil), Gagal (pesan error jika jaringan mati/404), dan Kosong (pesan jika data array kosong).
+
+app.js sekarang benar-benar cuma perakit: isinya cuma import dari lima modul lain dan satu fungsi mulai(), tanpa logika apa pun.
+dom.js dipangkas jadi cuma pemilih elemen, render(state), dan perubahan kelas — nggak ada lagi addEventListener di berkas ini.
+Keadaan aplikasi (kategori aktif, daftar favorit) nggak lagi dibaca dari class di tombol HTML, tapi dari satu objek state di state.js.
+Pilihan kategori dan daftar favorit sekarang diingat lewat localStorage — ditutup tab dan dibuka lagi, pilihan terakhir tetap ada. Data proyek dari server sengaja nggak ikut disimpan, biar selalu fetch yang terbaru.
+Simpanan yang rusak (bukan JSON valid, atau beda nomor versi skema) otomatis dibuang dan diganti nilai bawaan, halaman tetap kebuka normal.
 
 Catatan penggunaan AI:
 
 Dibantu AI:
-- dibantu menambahkan script bagian api.js dan app.js.
-- Membantu pemetaan format JSON dan penanganan error 404/galat jaringan.
+
+Dibantu merancang pemecahan lima modul (data.js, state.js, dom.js, events.js, app.js) supaya tiap berkas cuma punya satu tanggung jawab.
+Dibantu mengerjakan worksheet panduan cara mengerjakannya .
 
 Aku kerjain sendiri:
-- Bikin file data/proyek.json dan mindahin data array film ke bentuk JSON yang valid.
-- Nambahin elemen pesan muat/loading (#muat) di profil.html dan ngatur atribut hidden-nya.
-- Menguji 4 keadaan antarmuka (berhasil, gagal, memuat, kosong) di DevTools panel Network.
-- Mengambil URL Raw GitHub (raw.githubusercontent.com) dari repository PABW1 dan menetapkannya di ALAMAT pada js/api.js.
-- Mengisi seluruh evaluasi mandiri, tabel refleksi, dan pertanyaan tiket keluar di lembar F.
-- Commit dan push semua perubahan proyek Pertemuan 10 ke GitHub.
+
+Mindahin isi app.js dan dom.js versi lama ke lima berkas baru sesuai pembagian tanggung jawabnya.
+menulis fungsi simpan()/muat()/pulihkan() di state.js, termasuk penanganan simpanan rusak pakai try/catch dan pengecekan nomor versi.
+Nambahin tombol favorit dan tombol atur ulang di profil.html, nyesuain style-nya di komponen.css.
+Nguji state langsung dari Console (window.state sementara) buat mastiin semua keadaan ada di satu objek, nggak nempel di DOM.
+Nguji localStorage beneran: ganti kategori, tandai favorit, tutup tab, buka lagi — pastiin pilihannya masih ada.
+Ngerusakin localStorage sengaja lewat Console (isi bukan JSON, nomor versi beda) buat mastiin halaman tetap kebuka.
+Mengisi seluruh evaluasi mandiri, tabel refleksi, dan pertanyaan tiket keluar di lembar F.
+Commit dan push semua perubahan proyek Pertemuan 11 ke GitHub.
