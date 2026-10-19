@@ -169,6 +169,19 @@ input:user-invalid {
   border-color: var(--color-primary);
 }
 
+.favorit {
+  background: transparent;
+  color: var(--color-primary);
+  border: none;
+  padding: 0;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+#atur-ulang {
+  margin-bottom: var(--space-4);
+}
+
 .pesan-kosong {
   color: var(--color-fg);
   font-size: var(--text-sm);
