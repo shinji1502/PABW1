@@ -1,0 +1,6 @@
+[
+  { "id": 1, "judul": "Marvel", "tahun": 2014, "sutradara": "Christopher Nolan", "rating": 9, "kategori": "Aksi" },
+  { "id": 2, "judul": "Spider-Man", "tahun": 2001, "sutradara": "Sam Raimi", "rating": 9, "kategori": "Aksi" },
+  { "id": 3, "judul": "Pengapdi-setan", "tahun": 2019, "sutradara": "Bong Joon-ho", "rating": 8, "kategori": "Horror" },
+  { "id": 4, "judul": "Khodam", "tahun": 2016, "sutradara": "Siti", "rating": 8, "kategori": "Horror" }
+]
