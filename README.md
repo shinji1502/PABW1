@@ -1,35 +1,38 @@
-Pertemuan 11 — Modul, State, dan Penyimpanan Klien
-Lanjutan “Daftar Film Saya” dari Pertemuan 10, disalin ke folder worksheet-p11/.
+# Pertemuan 12 — Build Tooling, npm, dan Framework SPA
+Lanjutan Daftar Film Saya dari Pertemuan 11, dipindahkan ke worksheet-p12 dan dibuat ulang pakai Vue dan Vite.
+
+Nama: Hideaki Hayyi Shinji
+NIM: 25523219
+Kelas: SIF302
+
+Versi Perkakas:
+- node -v: v20.18.0 (LTS)
+- npm -v: 10.8.2
+- Port Dev: http://localhost:5173/
+- Port Preview: http://localhost:4173/
 
 Yang baru:
+- Proyek baru dibuat di folder worksheet-p12 pakai npm create vite.
+- Empat komponen di src/components/: KepalaProfil.vue, TombolFilter.vue, DaftarProyek.vue, dan FormKontak.vue.
+- state.js sekarang pakai reactive Vue tanpa render manual.
+- App.vue pakai onMounted buat ambil data dan watch buat simpan ke localStorage otomatis.
+- Hasil build siap kirim ada di folder dist/ lewat npm run build dan dicek lewat npm run preview.
 
-js/data.js — modul data: objek profil, fungsi buatPerkenalan() dan formatKeahlian() (dipindah dari app.js), serta fungsi murni saring() untuk menyaring daftar proyek berdasarkan kategori.
-js/state.js — satu objek state tunggal (kategoriAktif, favorit, daftarProyek) beserta fungsi-fungsi pengubahnya (pilihKategori, tambahFavorit, isiProyek, aturUlang). Juga berisi simpan()/muat()/pulihkan() untuk localStorage, lengkap dengan penanda versi skema.
-js/events.js — seluruh addEventListener dikumpulkan di sini (klik filter, klik favorit, klik atur ulang, validasi form), dipanggil lewat satu fungsi pasangPendengar().
-Tombol favorit (★/☆) di tiap kartu film, dan tombol “Atur ulang” baru di profil.html.
-
-Yang berubah secara tampilan:
-
-app.js sekarang benar-benar cuma perakit: isinya cuma import dari lima modul lain dan satu fungsi mulai(), tanpa logika apa pun.
-dom.js dipangkas jadi cuma pemilih elemen, render(state), dan perubahan kelas — nggak ada lagi addEventListener di berkas ini.
-Keadaan aplikasi (kategori aktif, daftar favorit) nggak lagi dibaca dari class di tombol HTML, tapi dari satu objek state di state.js.
-Pilihan kategori dan daftar favorit sekarang diingat lewat localStorage — ditutup tab dan dibuka lagi, pilihan terakhir tetap ada. Data proyek dari server sengaja nggak ikut disimpan, biar selalu fetch yang terbaru.
-Simpanan yang rusak (bukan JSON valid, atau beda nomor versi skema) otomatis dibuang dan diganti nilai bawaan, halaman tetap kebuka normal.
+Ukuran sebelum dan sesudah build:
+- Sebelum build (npm run dev): sekitar 215 kB, 22 berkas terpisah.
+- Sesudah build (npm run preview): sekitar 64 kB (24 kB gzip), 5 berkas saja.
 
 Catatan penggunaan AI:
 
 Dibantu AI:
-
-Dibantu merancang pemecahan lima modul (data.js, state.js, dom.js, events.js, app.js) supaya tiap berkas cuma punya satu tanggung jawab.
-Dibantu mengerjakan worksheet panduan cara mengerjakannya .
+- Dibantu memecah halaman lama jadi 4 komponen Vue.
+- Dibantu mengubah state.js lama jadi reactive dan menyambungkan ke localStorage.
+- Dibantu menjawab beberapa soal di lembar kerja worksheet.
 
 Aku kerjain sendiri:
-
-Mindahin isi app.js dan dom.js versi lama ke lima berkas baru sesuai pembagian tanggung jawabnya.
-menulis fungsi simpan()/muat()/pulihkan() di state.js, termasuk penanganan simpanan rusak pakai try/catch dan pengecekan nomor versi.
-Nambahin tombol favorit dan tombol atur ulang di profil.html, nyesuain style-nya di komponen.css.
-Nguji state langsung dari Console (window.state sementara) buat mastiin semua keadaan ada di satu objek, nggak nempel di DOM.
-Nguji localStorage beneran: ganti kategori, tandai favorit, tutup tab, buka lagi — pastiin pilihannya masih ada.
-Ngerusakin localStorage sengaja lewat Console (isi bukan JSON, nomor versi beda) buat mastiin halaman tetap kebuka.
-Mengisi seluruh evaluasi mandiri, tabel refleksi, dan pertanyaan tiket keluar di lembar F.
-Commit dan push semua perubahan proyek Pertemuan 11 ke GitHub.
+- Cek versi node dan npm di terminal.
+- Bikin folder baru, install paket, dan pindahin 6 CSS asli ke folder src/.
+- Pindahin film-1.jpg dan proyek.json ke folder public/.
+- Nguji filter, bintang favorit, dan localStorage di browser.
+- Jalanin npm run build dan npm run preview.
+- Ngisi seluruh lembar kerja worksheet dan push ke GitHub.
