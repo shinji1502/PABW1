@@ -1,19 +1,34 @@
+<script setup>
+import { onMounted, watch } from 'vue'
+import { profil } from './data.js'
+import { state, simpan, muat, pulihkan, isiProyek } from './state.js'
+import { ambilProyek } from './api.js'
+
+import KepalaProfil from './components/KepalaProfil.vue'
+import TombolFilter from './components/TombolFilter.vue'
+import DaftarProyek from './components/DaftarProyek.vue'
+import FormKontak from './components/FormKontak.vue'
+
+onMounted(async () => {
+  pulihkan(muat())
+  state.memuat = true
+  try {
+    isiProyek(await ambilProyek())
+  } catch (galat) {
+    state.galat = 'Data gagal dimuat. Periksa koneksi, lalu muat ulang.'
+    console.error(galat)
+  } finally {
+    state.memuat = false
+  }
+})
+
+watch(state, (nilai) => simpan(nilai), { deep: true })
+</script>
+
 <template>
   <div class="page">
-    <header>
-      <input type="checkbox" id="tema" class="pengalih-tema">
-      <div class="navbar">
-        <h1>Daftar Film Saya</h1>
-        <nav aria-label="Navigasi utama">
-          <ul>
-            <li><a href="#bagian-1">Daftar Film</a></li>
-            <li><a href="#bagian-2">Tambah Film</a></li>
-            <li><a href="#film-favorit">Film Favorit</a></li>
-          </ul>
-        </nav>
-        <label for="tema" class="tombol-tema">Tema gelap</label>
-      </div>
-    </header>
+    <!-- Komponen 1: Kepala Profil (Menerima props profil) -->
+    <KepalaProfil :profil="profil" />
 
     <div class="isi content">
       <aside class="sisi kartu">
@@ -28,6 +43,7 @@
       <main class="utama">
         <section id="bagian-1">
           <h2>Daftar Film</h2>
+
           <div class="tabel-gulir" tabindex="0" role="region" aria-label="Tabel daftar film">
             <table>
               <caption>Film yang pernah saya tonton beserta rating saya</caption>
@@ -73,35 +89,15 @@
             <figcaption>Ilustrasi film favorit saya.</figcaption>
           </figure>
 
-          <div class="baris-filter" id="filter">
-            <button type="button" data-kategori="semua" class="aktif">Semua</button>
-            <button type="button" data-kategori="Aksi">Aksi</button>
-            <button type="button" data-kategori="Horror">Horror</button>
-            <button type="button" data-kategori="Animasi">Animasi</button>
-          </div>
+          <!-- Komponen 2: Tombol Filter Kategori & Atur Ulang -->
+          <TombolFilter />
 
-          <button type="button" id="atur-ulang">Atur ulang</button>
-          <div class="galeri grid" id="galeri-film"></div>
+          <!-- Komponen 3: Daftar Kartu Film & Rating -->
+          <DaftarProyek />
         </section>
 
-        <section id="bagian-2">
-          <h2>Tambah Film</h2>
-          <form class="kartu" id="form-film" action="/simpan" method="post" novalidate>
-            <p class="form-kolom">
-              <label for="judul-film">Judul film</label>
-              <input type="text" id="judul-film" name="judul-film" required>
-            </p>
-            <p class="form-kolom">
-              <label for="tahun-film">Tahun rilis</label>
-              <input type="number" id="tahun-film" name="tahun-film" min="1888" max="2026" required>
-            </p>
-            <p class="form-kolom">
-              <label for="rating-film">Rating saya (1–10)</label>
-              <input type="number" id="rating-film" name="rating-film" min="1" max="10" required>
-            </p>
-            <button type="submit">Simpan</button>
-          </form>
-        </section>
+        <!-- Komponen 4: Form Tambah Film -->
+        <FormKontak />
       </main>
     </div>
 
